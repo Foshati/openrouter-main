@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api-backend:
     build:
@@ -16,7 +14,7 @@ services:
       context: .
       dockerfile: apps/primary-backend/Dockerfile
     ports:
-      - "3000:3000"
+      - "3002:3000"
     restart: unless-stopped
     env_file:
       - .env
