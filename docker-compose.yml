@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  api-backend:
+    build:
+      context: .
+      dockerfile: apps/api-backend/Dockerfile
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  primary-backend:
+    build:
+      context: .
+      dockerfile: apps/primary-backend/Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  dashboard-frontend:
+    build:
+      context: .
+      dockerfile: apps/dashboard-frontend/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    restart: unless-stopped
+    env_file:
+      - .env
